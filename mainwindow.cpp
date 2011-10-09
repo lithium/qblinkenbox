@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     bbi = new BlinkenBoxInstance();
+    addr_ = 0;
 }
 
 MainWindow::~MainWindow()
@@ -16,17 +17,41 @@ MainWindow::~MainWindow()
 }
 
 
-void MainWindow::button_goto()
+void MainWindow::pressGoto()
 {
-    byte input = inputByte();
+    goto_address(inputByte());
+}
 
-    bbi->PC_ = input;
+void MainWindow::pressPoke()
+{
+    byte *mem = (byte*)bbi->access_memory(addr_);
+    *mem = inputByte();
+
+    goto_address(addr_+1);
+}
+
+void MainWindow::pressNext()
+{
+    goto_address(addr_+1);
+}
+
+void MainWindow::pressDeposit()
+{
+    byte *mem = (byte*)bbi->access_memory(addr_);
+    data_ = inputByte();
+    *mem = data_;
 
     update_console();
 }
 
-void MainWindow::button_poke()
+
+void MainWindow::goto_address(int address)
 {
+    addr_ = address;
+    byte *mem = (byte*)bbi->access_memory(addr_);
+    data_ = *mem;
+
+    update_console();
 }
 
 
@@ -41,9 +66,9 @@ byte MainWindow::inputByte()
 
 void MainWindow::update_console()
 {
-    QHBoxLayout *row0 = ui->led_row0_3;
+    update_led_row(ui->led_row1, addr_ & 0xFF);
+    update_led_row(ui->led_row2, data_ & 0xFF);
 
-    update_led_row(ui->led_row1, bbi->PC_ & 0xFF);
 }
 
 
@@ -55,6 +80,6 @@ void MainWindow::update_led_row(QHBoxLayout *row, byte value)
     int i;
     for (i=0; i<8; i++) {
         QLabel *led = (QLabel*)row->itemAt(i)->widget();
-        led->setPixmap( (value & (1<<(8-i))) ? pon : poff);
+        led->setPixmap( (value & (1<<(7-i))) ? pon : poff);
     }
 }

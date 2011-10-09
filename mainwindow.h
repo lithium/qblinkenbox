@@ -23,18 +23,23 @@ public:
     ~MainWindow();
 
 public slots:
-    void button_goto();
-    void button_poke();
+    void pressGoto();
+    void pressPoke();
+    void pressDeposit();
+    void pressNext();
 
-    void update_console();
 
 
 private:
     Ui::MainWindow *ui;
     BlinkenBoxInstance *bbi;
+    int addr_;
+    byte data_;
 
+
+    void goto_address(int address);
     byte inputByte();
-
+    void update_console();
     void update_led_row(QHBoxLayout *row, byte value);
 
 
