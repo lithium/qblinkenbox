@@ -27,6 +27,7 @@ public slots:
     void pressPoke();
     void pressDeposit();
     void pressNext();
+    void toggleRun(int state);
 
 
 

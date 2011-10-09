@@ -44,6 +44,18 @@ void MainWindow::pressDeposit()
     update_console();
 }
 
+void MainWindow::toggleRun(int state)
+{
+    if (state) {
+      bbi->PC_ = addr_;
+      bbi->run();
+    }
+}
+
+
+
+
+
 
 void MainWindow::goto_address(int address)
 {
