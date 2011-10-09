@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "lib/blinkenboxinstance/blinkenboxinstance.h"
+#include "lib/blinkenbox/blinkenboxinstance.h"
 
 
 #include <QHBoxLayout>

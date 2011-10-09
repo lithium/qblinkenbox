@@ -12,10 +12,10 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-        lib/blinkenboxinstance/blinkenboxinstance.cpp
+        lib/blinkenbox/blinkenboxinstance.cpp
 
 HEADERS  += mainwindow.h \
-        lib/blinkenboxinstance/blinkenboxinstance.h
+        lib/blinkenbox/blinkenboxinstance.h
 
 
 FORMS    += mainwindow.ui

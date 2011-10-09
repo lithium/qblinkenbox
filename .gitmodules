@@ -1,0 +1,3 @@
+[submodule "lib/blinkenbox"]
+	path = lib/blinkenbox
+	url = git@github.com:lithium/arduino-blinkenbox.git
