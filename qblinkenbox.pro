@@ -11,12 +11,17 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+        lib/blinkenboxinstance/blinkenboxinstance.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+        lib/blinkenboxinstance/blinkenboxinstance.h
+
 
 FORMS    += mainwindow.ui
 
 RESOURCES += \
     assets.qrc
+
+
 
